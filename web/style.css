@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.outer-notebook {
+    padding: 20px;
+    padding-top: 70px;
+}
+
+.options {
+    height: 80vh;
+    overflow-y: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    border-top: 1px solid #ccc;
+    transition: all 0.2s;
+    z-index: 100;
+}
+
+.hidden {
+    bottom: -80vh;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background: white;
+    z-index: 100;
+    padding: 0 20px;
+}
+
+.code-block {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+button {
+    border: none;
+    padding: 0px;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.text-block-textarea {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.text-block-textarea:focus {
+    outline: 1px solid #146efe;
+}
+
+#add-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+#add-code-button {
+    padding: 4px 10px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+#add-text-button {
+    padding: 4px 10px;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+
+.run-button {
+    padding: 4px 10px;
+    background-color: black;
+    color: white;
+}
+
+.remove-button {
+    padding: 4px 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.text-remove-button {
+    padding: 4px 10px;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Notebook Clone</title>
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <meta charset="utf-8">
+
+    <script src="/other/cdn/CodeMirror/cm.js"></script>
+    <script src="/other/cdn/CodeMirror/js.js"></script>
+    <script src="/other/cdn/CodeMirror/py.js"></script>
+    <link rel="stylesheet" href="/other/cdn/CodeMirror/cm.css"/>
+
+
+    <!--move to our own font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav>
+        <img src="/other/images/Z.svg" alt="logo" height="40">
+        <button onclick="toggleOptions()">Options</button>
+    </nav>
+    <div class="options hidden">
+        <button onclick="saveNotebook()">Save</button>
+        <button onclick="loadNotebook()">Load</button>
+        <button onclick="clearNotebook()">Clear</button>
+
+        <button onclick="runAll()">Run All</button>
+    </div>
+    <div class="outer-notebook">
+        <div id="notebook">
+        </div>
+
+        <div id="add-buttons">
+            <button id="add-code-button" onclick="addCodeBlock()">Code</button>
+            <button id="add-text-button" onclick="addTextBlock()">Text</button>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
