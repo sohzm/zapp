@@ -6,7 +6,6 @@
   height: auto;
   color: black;
   direction: ltr;
-  border: 1px solid #eee;
   font-size: 14px;
 }
 
@@ -27,8 +26,8 @@
 /* GUTTER */
 
 .CodeMirror-gutters {
-  border-right: 1px solid #ddd;
-  background-color: #f7f7f7;
+  border-right: 10px solid transparent;
+  background-color: transparent;
   white-space: nowrap;
 }
 .CodeMirror-linenumbers {}
@@ -240,7 +239,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
   -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
   border-width: 0;
   background: transparent;
-  font-family: inherit;
+  font-family: 'JetBrains Mono', monospace;
   font-size: inherit;
   margin: 0;
   white-space: pre;

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 .outer-notebook {
@@ -16,14 +17,37 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: white;
-    border-top: 1px solid #ccc;
     transition: all 0.2s;
     z-index: 100;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .hidden {
     bottom: -80vh;
+}
+
+.empty {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    background-color: black;
+    transition: all 0.2s;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.empty-hidden {
+    opacity: 0.4;
+    pointer-events: all;
 }
 
 nav {
@@ -35,13 +59,19 @@ nav {
     width: 100%;
     height: 50px;
     background: white;
-    z-index: 100;
+    z-index: 80;
     padding: 0 20px;
 }
 
-.code-block {
+.code-block, .text-block {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 15px auto;
+}
+
+.code-block {
+  border: 1px solid #e5ebf1;
+  border-radius: 4px;
+  padding-top: 10px;
 }
 
 button {
@@ -51,6 +81,9 @@ button {
     background-color: transparent;
     cursor: pointer;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .text-block-textarea {
@@ -75,29 +108,101 @@ button {
     padding: 4px 10px;
     background-color: black;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 #add-text-button {
     padding: 4px 10px;
     background-color: gray;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
 }
 
-.run-button {
-    padding: 4px 10px;
-    background-color: black;
-    color: white;
+.block-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
 }
 
-.remove-button {
-    padding: 4px 10px;
-    margin-top: 10px;
-    margin-bottom: 30px;
+.run-button > img, .remove-button > img, .more-button > img {
+    width: 20px;
+    height: 20px;
+}
+
+.remove-button > img {
+    width: 18px;
+    height: 18px;
+}
+
+.options-inner {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.options-inner-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ebebeb;
+    color: black;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.options-inner-buttons:hover {
+    background-color: #d9d9d9;
+}
+
+@media screen and (min-width: 840px) {
+    .options {
+        max-width: 700px;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .hidden {
+        top: 100%;
+        transform: translate(-50%, 0);
+    }
+}
+
+.link {
+    color: blue;
+}
+
+.CodeMirror * {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.text-block {
+    position: relative;
 }
 
 .text-remove-button {
-    padding: 4px 10px;
-    margin-bottom: 30px;
+    display: none;
+    background-color: black;
+    color: white;
+    padding: 2px 5px;
+}
+
+.text-block:hover .text-remove-button {
+    display: inline-block;
+}
+
+.pre-output {
+    font-size: 14px;
+    font-family: 'JetBrains Mono';
+    padding: 10px;
+    border-top: 1px solid #e5ebf1;
+    border-bottom: 1px solid #e5ebf1;
+    overflow: auto;
+    background: #f8f8f8;
 }

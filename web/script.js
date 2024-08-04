@@ -11,7 +11,7 @@ socket.onmessage = function(event) {
     let outputHtml = '';
 
     if (data.output.stdout) {
-        outputHtml += `<pre>${data.output.stdout}</pre>`;
+        outputHtml += `<pre class="pre-output">${data.output.stdout}</pre>`;
     }
 
     data.output.rich_output.forEach(item => {
@@ -20,12 +20,12 @@ socket.onmessage = function(event) {
             // For now, we'll just display it as plain text
             outputHtml += `<div class="markdown">${item.content}</div>`;
         } else if (item.type === 'text') {
-            outputHtml += `<pre>${item.content}</pre>`;
+            outputHtml += `<pre class="pre-output">${item.content}</pre>`;
         }
     });
 
     if (data.output.error) {
-        outputHtml += `<pre class="error">${data.output.error}</pre>`;
+        outputHtml += `<pre class="pre-error">${data.output.error}</pre>`;
     }
 
     output.innerHTML = outputHtml;
@@ -37,9 +37,13 @@ function addCodeBlock() {
     const newBlock = `
         <div id="${blockId}" class="code-block">
             <textarea id="code-${blockId}"></textarea>
-            <button class="run-button" onclick="runCodeBlock('${blockId}')">Run</button>
-            <button class="remove-button" onclick="removeCodeBlock('${blockId}')">Remove</button>
             <div class="output"></div>
+            <div class="block-buttons">
+                <button class="run-button" onclick="runCodeBlock('${blockId}')"><img src="/other/images/icons/play.svg" alt="Run" /></button>
+                <button class="remove-button" onclick="removeCodeBlock('${blockId}')"><img src="/other/images/icons/trash.svg" alt="Remove" /></button>
+
+                <button class="more-button" onclick="toggleOptions()"><img src="/other/images/icons/more.svg" alt="More" /></button>
+            </div>
         </div>
     `;
     document.getElementById('notebook').insertAdjacentHTML('beforeend', newBlock);
@@ -59,7 +63,7 @@ function addTextBlock() {
     const blockId = `block-${blockCount}`;
     const newTextBlock = `
         <div id="${blockId}" class="text-block">
-            <textarea class="text-block-textarea"></textarea>
+            <div contenteditable="true" class="text-block-textarea"></div>
             <button class="text-remove-button" onclick="removeCodeBlock('${blockId}')">Remove</button>
         </div>
     `;
@@ -83,6 +87,9 @@ function removeCodeBlock(blockId) {
 function toggleOptions() {
     const options = document.querySelector('.options');
     options.classList.toggle('hidden');
+
+    const empty = document.querySelector('.empty');
+    empty.classList.toggle('empty-hidden');
 }
 
 // Initialize with one code block
