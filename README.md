@@ -1,4 +1,4 @@
-![zapp screenshot](/web/other/images/screenshot1.png)
+![zapp screenshot](/web/other/images/screenshot2.png)
 
 a minimal ipnyb notebook like thingy
 
